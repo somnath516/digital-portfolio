@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somnath M S | Creative Coder</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #f8fafc;
+            --accent: #f59e0b;
+            --text: #1e293b;
+            --light-text: #64748b;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 25% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+            color: white;
+            padding: 3rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--secondary);
+            clip-path: ellipse(75% 100% at 50% 100%);
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 1.5rem 0;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin: 1rem 0;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .social-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            margin-top: -2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: rotate(3deg);
+            transition: all 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .skill {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .skill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .education-item, .experience-item, .certificate-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .education-item:hover, .experience-item:hover, .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .education-item h3, .experience-item h3, .certificate-item h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .education-item h3::before, .experience-item h3::before, .certificate-item h3::before {
+            content: "•";
+            color: var(--accent);
+            font-size: 1.8rem;
+            line-height: 0;
+        }
+        
+        .origami-icon {
+            display: inline-flex;
+            margin-left: 8px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* NEW: Resume Download Button Styles */
+        .resume-container {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+        
+        .resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+            background: #1e4fcf;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            background: var(--primary);
+            color: white;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--secondary);
+            clip-path: ellipse(75% 100% at 50% 0%);
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-note {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-img {
+                margin: 0 auto;
+            }
+            
+            h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Somnath M S</h1>
+            <p class="tagline">Creative Coder & Origami Artist</p>
+            <div class="social-links">
+                <a href="https://github.com/somnath516" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/somnath-m-s-12b66a328" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:somnath.ms.0501@gmail.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Email
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section id="about">
+            <div class="about">
+                <div class="about-text">
+                    <h2>A Little About Me</h2>
+                    <p>Hey there! I'm Somnath, a passionate 3rd year B.Sc Computer Science student who loves transforming complex problems into elegant code solutions. When I'm not immersed in programming, you'll find me crafting intricate origami designs <span class="origami-icon">🎨</span> - both hobbies require precision, creativity, and patience.</p>
+                    <p>I approach technology with curiosity and origami with mindfulness, blending analytical thinking with artistic expression in everything I do.</p>
+                </div>
+                <img src="profile.jpg" alt="Somnath M S" class="profile-img">
+            </div>
+        </section>
+        
+        <section id="skills">
+            <h2>My Skills</h2>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">Excel</span>
+                <span class="skill">Git</span>
+                <span class="skill">Web Development</span>
+                <span class="skill">Problem Solving</span>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>Education Journey</h2>
+            <div class="education-item">
+                <h3>Higher Secondary Education (12th)</h3>
+                <p><strong>Bharathi Matric Higher Secondary School</strong></p>
+                <p>Completed in 2023 with 68%</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>B.Sc Computer Science</h3>
+                <p><strong>S.A. College of Arts and Science</strong> | 2023 - Present</p>
+                <p>Currently pursuing undergraduate degree with focus on programming fundamentals, database systems, and computer applications</p>
+            </div>
+        </section>
+        
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <h3>Web Developer Intern</h3>
+                <p><strong>Code IT Solutions</strong> | 1 Month</p>
+                <ul>
+                    <li>Developed responsive web components using modern HTML/CSS techniques</li>
+                    <li>Collaborated on team projects using Git version control</li>
+                    <li>Implemented UI designs with attention to user experience</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Python Programming Intern</h3>
+                <p><strong>Code Alpha</strong> | 1 Month</p>
+                <ul>
+                    <li>Built Python scripts to automate repetitive tasks</li>
+                    <li>Solved algorithmic challenges to improve coding skills</li>
+                    <li>Learned best practices for writing clean, maintainable code</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="certificates">
+            <h2>Certifications & Achievements</h2>
+            <div class="certificate-item">
+                <h3>Bentley Education - 2D/3D CAD Modeling</h3>
+                <p><strong>Bentley Systems</strong> | Certificate ID: C105420</p>
+                <p>Fundamentals of Building Environment Modeling</p>
+            </div>
+            <div class="certificate-item">
+                <h3>Introduction to MongoDB, AI, and Vector Search</h3>
+                <p><strong>ICT Academy Learnathon</strong></p>
+            </div>
+            <div class="certificate-item">
+                <h3>UiPath Automation Explorer for Students</h3>
+                <p><strong>UiPath Academy</strong></p>
+            </div>
+            <div class="certificate-item">
+                <h3>Celonis Process Mining Fundamentals</h3>
+                <p><strong>ICT Academy Learnathon</strong></p>
+            </div>
+        </section>
+
+        <!-- NEW: Resume Download Section -->
+        <div class="resume-container">
+            <a href="resume.pdf" class="resume-btn" download="Somnath_MS_Resume">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download CV
+            </a>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>Let's create something amazing together!</p>
+            <p class="footer-note">Crafted with ❤️ and origami paper by Somnath</p>
+            <p>&copy; <span id="year"></span> Somnath M S. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
